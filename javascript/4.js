@@ -4,20 +4,25 @@ function isPalindrome(number) {
 
 }
 
-function main() {
+function main(start = 999, chunkSize = 100) {
 	let firstNum = undefined
 	let secondNum = undefined
-	let product = []
+	let products = []
 	
-	for (firstNum = 999; firstNum >= 900; firstNum--) {
-		for (secondNum = 999; secondNum >= 900; secondNum--) {
+	for (firstNum = start; firstNum >= start - chunkSize; firstNum--) {
+		for (secondNum = start; secondNum >= chunkSize; secondNum--) {
 			if(isPalindrome(firstNum * secondNum)) {
-				product.push(firstNum * secondNum)
+				products.push(firstNum * secondNum)
 			}
 		}
 	}	
 
-	return product.reduce((largest, n) => n > largest ? n : largest, 0)
+	if (products.length) {
+		return products.reduce((largest, n) => n > largest ? n : largest, 0)
+	} 
+	else {
+		return main(start - chunkSize, chunkSize) 
+	}
 }
 
 console.log(main())
