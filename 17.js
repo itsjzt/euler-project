@@ -52,6 +52,10 @@ function tensInWord(_tens, ones) {
     return "";
   }
 
+  if (_tens === 0) {
+    return onesInWord(ones);
+  }
+
   //   if number is like 12, 19, 11
   if (tensValue >= 10 && tensValue <= 19) {
     return words[tensValue + ones];
@@ -75,7 +79,7 @@ function numberToWord(number = 0) {
 
   if (placeValues.length === 3) {
     return `${onesInWord(hundreds)} hundred ${
-      tens !== 0 && ones !== 0 ? "and" : ""
+      tens !== 0 || ones !== 0 ? "and" : ""
     } ${tensInWord(tens, ones)}`;
   }
 
@@ -93,8 +97,8 @@ function main() {
     .fill(null)
     .map((_, i) => i + 1)
     .map((n) => numberToWord(n))
-    .map((word) => word.replace(" ", "").replace("-", ""))
-    .map((word) => word.length)
+    .map((word) => word.replace(/\s+/gi, "").replace(/\-/gi, ""))
+    .map((word) => word.trim().length)
     .reduce((acc, count) => acc + count, 0);
 }
 
