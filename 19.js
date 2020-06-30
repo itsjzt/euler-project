@@ -27,9 +27,14 @@ const days = [
 function firstDayOfMonth(startingDayLastMonth, lastMonthDaysCount) {
   const dayOffset = Math.ceil(lastMonthDaysCount % 7);
   const dayToInt = days.indexOf(startingDayLastMonth);
-  return days[dayToInt + dayOffset];
+  let firstDayInNumber = dayToInt + dayOffset;
+  if (firstDayInNumber >= 7) {
+    firstDayInNumber = firstDayInNumber % 7;
+  }
+  return days[firstDayInNumber];
 }
 
+let sundaysOn1st = 0;
 for (let year = 1901, firstDayOfYear = "monday"; year < 2000; year++) {
   let isLeapYear = checkIsLeapYear(year);
 
@@ -45,7 +50,8 @@ for (let year = 1901, firstDayOfYear = "monday"; year < 2000; year++) {
   let firstDayOfOct = firstDayOfMonth(firstDayOfSep, 30);
   let firstDayOfNov = firstDayOfMonth(firstDayOfOct, 31);
   let firstDayOfDec = firstDayOfMonth(firstDayOfNov, 30);
-  let firstDaysOfThisYear = [
+
+  sundaysOn1st += [
     firstDayOfJan,
     firstDayOfFeb,
     firstDayOfMar,
@@ -58,8 +64,9 @@ for (let year = 1901, firstDayOfYear = "monday"; year < 2000; year++) {
     firstDayOfOct,
     firstDayOfNov,
     firstDayOfDec,
-  ];
-  console.log({ firstDaysOfThisYear });
+  ].filter((day) => day === "sunday").length;
 
   firstDayOfYear = firstDayOfMonth(firstDayOfDec, 31);
 }
+
+console.log("sundaysOn1st", sundaysOn1st);
