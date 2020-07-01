@@ -1,5 +1,3 @@
-const { set } = require("ramda");
-
 function factors(n) {
   let factors = [];
   for (let i = 1; i < n; i++) {
