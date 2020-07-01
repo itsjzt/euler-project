@@ -29,6 +29,10 @@ function findTripletsInRange(from, to) {
   return triplets;
 }
 
-console.log(
-  findTripletsInRange(1, 1000).find((triplet) => sumIs1000(...triplet))
-);
+function main() {
+  return findTripletsInRange(1, 1000)
+    .find((triplet) => sumIs1000(...triplet))
+    .reduce((acc, n) => acc * n, 1);
+}
+
+module.exports = main;
