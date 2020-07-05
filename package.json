@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "Project euler solutions",
   "main": "1.js",
-  "dependencies": {
-    "ramda": "^0.27.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "bs-platform": "^8.0.3",
     "jest": "^26.1.0"
   },
   "scripts": {
