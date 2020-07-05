@@ -1,16 +1,16 @@
-function* genFib(till) {
-  let lastFib = 1;
-  let secondLastFib = 1;
-  yield 1;
-  yield 1;
-
-  while (true) {
-    let nextFib = lastFib + secondLastFib;
-    if (nextFib > till) break;
-    secondLastFib = lastFib;
-    lastFib = nextFib;
-    yield nextFib;
+function solve() {
+  // use big ints
+  // since number are gonna to get large, very large, very quickly
+  let prevSeries = [2n, 1n];
+  for(let i = 1; true; i++) {
+    let [last, secondLast] = prevSeries;
+    let next = last + secondLast
+    
+    if (next.toString().length >= 1000) {
+      return i
+    }
+    prevSeries = [next, ...prevSeries]
   }
 }
 
-const it = genFib(10);
+module.exports = solve
