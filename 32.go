@@ -22,15 +22,15 @@ type pandigit struct {
 	product int
 }
 
-func findPandigitProducts(iStart, iEnding, jStart, jEnding int) []pandigit {
+func findPandigitProducts(start, end int) []pandigit {
 
 	pandigits := make([]pandigit, 0);
 	
-	for i := iStart; i < iEnding; i++ {
-		for j := jStart; j < jEnding; j++ {
+	for i := start; i < end; i++ {
+		for j := start; j < end; j++ {
 			value := i * j;
 		
-			if containsAllPandigits(i, j, value) {
+			if checkPandigit(i, j, value) {
 				newPandigit := pandigit{ a: i, b: j,product: value }
 				if !checkPandigitExists(pandigits, newPandigit) {
 					pandigits = append(pandigits, newPandigit)
@@ -54,7 +54,7 @@ func checkPandigitExists(pandigits []pandigit, newPandigit pandigit) bool {
 	return false
 }
 
-func containsAllPandigits(i, j, value int) bool {
+func checkPandigit(i, j, value int) bool {
 	iStr := strconv.Itoa(i)
 	jStr := strconv.Itoa(j)
 	valueStr := strconv.Itoa(value)
