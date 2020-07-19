@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	pandigits := findPandigitProducts(10, 1000, 10, 1000);
+	pandigits := findPandigitProducts(1, 2000);
 	sum := 0
 	for i := 0; i < len(pandigits); i++ {
 		pandigit := pandigits[i]
