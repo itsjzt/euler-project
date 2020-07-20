@@ -1,13 +1,4 @@
-function checkPrime(number) {
-  let isPrime = true;
-  let rootOfNumber = Math.sqrt(number);
-
-  for (let i = 2; i <= rootOfNumber; i++) {
-    if (number % i === 0) isPrime = false;
-  }
-
-  return isPrime;
-}
+const checkPrime = require("./lib/checkPrime");
 
 function main() {
   let primes = [];

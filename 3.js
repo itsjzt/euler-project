@@ -1,13 +1,4 @@
-function checkPrime(number) {
-  let isPrime = true;
-  let halfOfNumber = number / 2;
-
-  for (let i = 2; i <= halfOfNumber; i++) {
-    if (number % i === 0) isPrime = false;
-  }
-
-  return isPrime;
-}
+const checkPrime = require("./lib/checkPrime");
 
 function getNumbers(range) {
   return Array(range)

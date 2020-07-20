@@ -30,7 +30,7 @@ function isDigitFactotial(num) {
 
 let digitFactorials = new Set();
 
-for (let i = 10; i < Number.MAX_SAFE_INTEGER; i++) {
+for (let i = 10; i < 5000000; i++) {
   if (isDigitFactotial(i)) {
     console.log(i);
     digitFactorials.add(i);

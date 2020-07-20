@@ -1,3 +1,5 @@
+const checkPrime = require("./lib/checkPrime");
+
 function main() {
   let primes = [];
   let i = 1;
@@ -16,17 +18,6 @@ function main() {
   }
 
   return primes[primes.length - 1];
-}
-
-function checkPrime(number) {
-  let isPrime = true;
-  let rootOfNumber = Math.sqrt(number);
-
-  for (let i = 2; i <= rootOfNumber; i++) {
-    if (number % i === 0) isPrime = false;
-  }
-
-  return isPrime;
 }
 
 module.exports = main;
