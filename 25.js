@@ -1,16 +1,18 @@
 function solve() {
   // use big ints
   // since number are gonna to get large, very large, very quickly
-  let prevSeries = [2n, 1n];
-  for(let i = 1; true; i++) {
+  let prevSeries = [1n, 1n];
+  while (true) {
     let [last, secondLast] = prevSeries;
-    let next = last + secondLast
-    
+    let next = last + secondLast;
+
     if (next.toString().length >= 1000) {
-      return i
+      return prevSeries.length + 1;
     }
-    prevSeries = [next, ...prevSeries]
+    prevSeries = [next, ...prevSeries];
   }
 }
 
-module.exports = solve
+console.log(solve());
+
+module.exports = solve;
